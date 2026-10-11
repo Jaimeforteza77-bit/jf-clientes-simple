@@ -21,6 +21,16 @@ if st.button("Guardar cliente"):
     st.success("Cliente guardado")
 
 st.subheader("Clientes guardados")
+st.subheader("Personas de contacto")
+contacto = st.text_input("Nombre del contacto")
+cargo = st.text_input("Cargo del contacto")
+telefono_contacto = st.text_input("Teléfono del contacto")
+email_contacto = st.text_input("Email del contacto")
+cliente_contacto = st.text_input("Cliente al que pertenece")
+if st.button("Guardar contacto"):
+      with open("contactos.csv", "a") as f:
+                csv.writer(f).writerow([cliente_contacto, contacto, cargo, telefono_contacto, email_contacto])
+                st.success("Contacto guardado correctamente")
 if os.path.exists(archivo):
          st.dataframe(pd.read_csv(archivo))
     
