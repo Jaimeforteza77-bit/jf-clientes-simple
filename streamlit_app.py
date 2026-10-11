@@ -36,6 +36,14 @@ if os.path.exists(archivo):
          st.subheader("Contactos guardados")
          if os.path.exists("contactos.csv"):
                st.dataframe(pd.read_csv("contactos.csv", header=None))
+
+               st.subheader("Consultar cliente")
+               clientes = pd.read_csv("clientes.csv")
+               cliente_elegido = st.selectbox("Selecciona un cliente", clientes["nombre"])
+               st.subheader("Contactos de " + cliente_elegido)
+               contactos = pd.read_csv("contactos.csv", header=none)
+               contactos_cliente = contactos[contactos[0] == cliente_elegido]
+               st.dataframe(contactos_cliente)
     
 
 
