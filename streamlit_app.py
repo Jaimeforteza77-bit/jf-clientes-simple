@@ -33,6 +33,9 @@ if st.button("Guardar contacto"):
                 st.success("Contacto guardado correctamente")
 if os.path.exists(archivo):
          st.dataframe(pd.read_csv(archivo))
+         st.subheader("Contactos guardados")
+         if os.path.exists("contactos.csv"):
+               st.dataframe(pd.read_csv("contactos.csv", header=None))
     
 
 
