@@ -42,7 +42,7 @@ if os.path.exists(archivo):
                cliente_elegido = st.selectbox("Selecciona un cliente", clientes["nombre"])
                st.subheader("Contactos de " + cliente_elegido)
                contactos = pd.read_csv("contactos.csv", header=None)
-               contactos_cliente = contactos[contactos[1] == cliente_elegido]
+               contactos_cliente = contactos[contactos[0].astype(str).str.strip().str.upper() == cliente_elegido.strip().upper()]
                st.dataframe(contactos_cliente)
     
 
