@@ -9,6 +9,6 @@ dependencies = [
     "supabase",
 ]
 
-[tool.uv]
+[tool.poetry]
 package-mode = false
 
