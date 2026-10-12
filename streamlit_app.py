@@ -28,7 +28,7 @@ contacto = st.text_input("Nombre del contacto")
 cargo = st.text_input("Cargo del contacto")
 telefono_contacto = st.text_input("Teléfono del contacto")
 email_contacto = st.text_input("Email del contacto")
-cliente_contacto = st.text_input("Cliente al que pertenece")
+cliente_contacto = st.selectbox("Cliente al que pertenece", pd.read_csv("clientes.csv")["nombre"].dropna().unique())
 if st.button("Guardar contacto"):
       with open("contactos.csv", "a", newline="") as f:
                 csv.writer(f).writerow([cliente_contacto, contacto, cargo, telefono_contacto, email_contacto])
