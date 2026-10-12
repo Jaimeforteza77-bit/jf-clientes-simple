@@ -1,3 +1,4 @@
+from supabase import create_client
 import csv
 import os
 archivo = "clientes.csv"
@@ -7,6 +8,7 @@ if not os.path.exists(archivo):
         escritor.writerow(["nombre", "telefono", "email", "notas"])
 import pandas as pd
 import streamlit as st
+supabase = create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["key"])
 st.title("JF Clientes")
 st.header("Clientes")
 nombre = st.text_input("Nombre del cliente")
