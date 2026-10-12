@@ -16,11 +16,7 @@ telefono = st.text_input("Teléfono")
 email = st.text_input("Email")
 notas = st.text_area("Notas")
 if st.button("Guardar cliente"):
-    with open(archivo, "a",newline="") as f:
-            f.write("\n")
-            csv.writer(f).writerow([nombre, telefono, email, notas])
-
-    st.success("Cliente guardado")
+    supabase.table("clientes").insert({"nombre": nombre}).execute()
 
 st.subheader("Clientes guardados")
 st.subheader("Personas de contacto")
