@@ -30,7 +30,7 @@ telefono_contacto = st.text_input("Teléfono del contacto")
 email_contacto = st.text_input("Email del contacto")
 cliente_contacto = st.text_input("Cliente al que pertenece")
 if st.button("Guardar contacto"):
-      with open("contactos.csv", "a") as f:
+      with open("contactos.csv", "a", newline="" as f:
                 csv.writer(f).writerow([cliente_contacto, contacto, cargo, telefono_contacto, email_contacto])
                 st.success("Contacto guardado correctamente")
 if os.path.exists(archivo):
