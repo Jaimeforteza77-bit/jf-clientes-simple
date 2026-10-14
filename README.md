@@ -1,25 +1,22 @@
-# 🎈 Blank app template
+# JF Clientes
 
-A simple Streamlit app template for you to modify!
+Aplicación Streamlit para gestionar clientes, contactos y actividades.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## Ejecutar
 
-### How to run it on your own machine
-
-Prerequisite: install `uv` if you don't already have it.
-
-```
-$ curl -LsSf https://astral.sh/uv/install.sh | sh
+```sh
+uv sync
+uv run streamlit run streamlit_app.py
 ```
 
-1. Sync the dependencies
+En el primer inicio, los clientes de `clientes.csv` y, si existe, los contactos de
+`contactos.csv` se importan a SQLite. Los CSV se conservan intactos. La base se
+guarda en `.jf_clientes/clientes.sqlite3`, fuera del control de versiones, con
+permisos restringidos en sistemas POSIX.
 
-   ```
-   $ uv sync
-   ```
-
-2. Run the app
-
-   ```
-   $ uv run streamlit run streamlit_app.py
-   ```
+Para guardar la base en otra ubicación, define `JF_CLIENTES_DB` antes de iniciar
+la aplicación. En un despliegue, esa ruta debe apuntar a un volumen persistente:
+el disco local de algunos servicios se elimina al reiniciar o volver a desplegar.
+SQLite usa transacciones y claves foráneas; no cifra el contenido, así que el
+volumen y sus copias de seguridad deben protegerse con los controles del sistema
+de alojamiento.

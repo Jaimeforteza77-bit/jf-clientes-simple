@@ -1,4 +1,5 @@
 .streamlit/secrets.toml
+.jf_clientes/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
